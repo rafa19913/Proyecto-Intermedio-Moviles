@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+  >
+
+
+
+        <!-- EMPIEZA: LinearLayout CONTENEDOR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#1F4A4A4A"
+            >
+
+
+        <!-- LinearLayout BOTONES SUPERIORES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="25dp"
+            android:background="#FFFF"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/bevan"
+                android:text="Control de Gastos"
+                android:textSize="20dp"
+
+                />
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <com.ornach.nobobutton.NoboButton
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_backgroundColor="#8E3DEF55"
+                app:nb_focusColor="#FF0000"
+                app:nb_textColor="#FFF"
+                app:nb_radius="5dp"
+                app:nb_fontIcon="&#xf067;"/>
+
+            <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnEliminarGasto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_backgroundColor="#8EFF0000"
+                app:nb_focusColor="#FF0000"
+                app:nb_textColor="#FFF"
+                app:nb_radius="5dp"
+                app:nb_fontIcon="&#xf014;"/>
+
+            <com.ornach.nobobutton.NoboButton
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_backgroundColor="#8EFFAA00"
+                app:nb_focusColor="#FF0000"
+                app:nb_textColor="#FFF"
+                app:nb_radius="5dp"
+                app:nb_fontIcon="&#xf040;"/>
+
+        </RelativeLayout>
+
+        </LinearLayout><!-- TERMINA: LinearLayout BOTONES SUPERIORES -->
+
+
+
+
+         <!-- LinearLayout LISTA -->
+         <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:padding="25dp"
+                    android:background="#FFFF"
+                    android:orientation="vertical"
+                    >
+
+             <Button
+                 android:id="@+id/BtnClear"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Clear"
+                 android:layout_gravity="center_horizontal"
+                 />
+                <ListView
+                    android:id="@+id/ListViewGastos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+
+            </LinearLayout><!-- TERMINA: LinearLayout LISTA -->
+
+
+
+        </LinearLayout><!-- TERMINA: LinearLayout CONTENEDOR -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
