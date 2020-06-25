@@ -58,7 +58,7 @@
                     <EditText
                         android:inputType="text"
                         android:gravity="center_horizontal"
-                        android:id="@+id/EditTextNombrePropietario"
+                        android:id="@+id/EditTextOwnerName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -82,9 +82,9 @@
                     android:textColorHint="#FFFF">
 
                     <EditText
-                        android:inputType="number"
+                        android:id="@+id/EditTextBalance"
+                        android:inputType="numberDecimal"
                         android:gravity="center_horizontal"
-                        android:id="@+id/EditTextSaldo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -97,6 +97,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.ornach.nobobutton.NoboButton
+                    android:id="@+id/BtnAceptNewAccount"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="50dp"
                     android:layout_width="200dp"

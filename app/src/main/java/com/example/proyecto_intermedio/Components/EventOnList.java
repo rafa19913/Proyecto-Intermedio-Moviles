@@ -1,42 +1,23 @@
-package com.example.proyecto_intermedio;
+package com.example.proyecto_intermedio.Components;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class EventOnList {
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-
-
-//Author..
-public class MainActivity extends AppCompatActivity {
-
-
-    private ArrayList<String> listaEjemplo = new ArrayList<>();
+ /*
+ private ArrayList<String> listaEjemplo = new ArrayList<>();
     private ArrayAdapter<String> listaAdapter;
     private ArrayAdapter<String> listaAdapter2;
     private ListView lista;
     Context cx = this;
     com.ornach.nobobutton.NoboButton elimiar;
-
-
     ListView listview ;
     Button btnClear;
+*/
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.expenses);
-        listview = findViewById(R.id.ListViewGastos);
+
+
+
+       /* listview = findViewById(R.id.ListViewGastos);
         btnClear = findViewById(R.id.BtnClear);
 
 
@@ -94,13 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-    }
-
-
+*/
 
 
 }

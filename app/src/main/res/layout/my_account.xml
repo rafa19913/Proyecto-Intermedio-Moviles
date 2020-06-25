@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- EMPIEZA: LinearLayout CONTENEDOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#1F4A4A4A"
+        >
+
+        <ImageView
+            android:id="@+id/arrowback"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:src="@drawable/arrowback"
+            />
+
+
+    <!-- LinearLayout BOX SUPERIOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="25dp"
+        android:background="#FFFF"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/user"
+            />
+
+        <!-- LinearLayout BOX SUPERIOR -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Propietario: "
+                    android:fontFamily="@font/bevan"
+                    android:textSize="15dp"
+                    />
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Juan Perez Rosales"
+                    android:fontFamily="@font/candal"
+                    android:textColor="#FF0000"
+                    />
+
+            </LinearLayout> <!-- TERMINA: BOX SUPERIOR -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_gravity="center_horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saldo: "
+                    android:fontFamily="@font/bevan"
+                    android:textSize="15dp"
+                    />
+                <TextView
+
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$600:"
+                    android:fontFamily="@font/candal"
+                    android:textColor="#FF0000"
+                    />
+
+            </LinearLayout> <!-- TERMINA: BOX SUPERIOR -->
+
+
+        </LinearLayout> <!-- TERMINA: BOX SUPERIOR -->
+
+
+    </LinearLayout> <!-- TERMINA: BOX SUPERIOR -->
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFF"
+            android:layout_margin="10dp"
+            android:padding="25dp"
+            android:gravity="center_horizontal"
+            >
+
+            <com.ornach.nobobutton.NoboButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_backgroundColor="#8EFFAA00"
+                app:nb_focusColor="#FF0000"
+                app:nb_textColor="#FFF"
+                app:nb_radius="5dp"
+                app:nb_fontIcon="&#xf040;"/>
+
+            <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnEliminarGasto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_backgroundColor="#8EFF0000"
+                app:nb_focusColor="#FF0000"
+                app:nb_textColor="#FFF"
+                app:nb_radius="5dp"
+                app:nb_fontIcon="&#xf014;"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout> <!-- TERMINA: LinearLayout CONTENEDOR -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

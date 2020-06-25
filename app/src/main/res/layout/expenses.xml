@@ -15,6 +15,12 @@
             android:background="#1F4A4A4A"
             >
 
+            <ImageView
+                android:id="@+id/arrowback"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:src="@drawable/arrowback"
+                />
 
         <!-- LinearLayout BOTONES SUPERIORES -->
         <LinearLayout
@@ -35,11 +41,14 @@
                 android:textSize="20dp"
 
                 />
+
         <RelativeLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
+
+
             <com.ornach.nobobutton.NoboButton
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
@@ -84,9 +93,7 @@
 
         </RelativeLayout>
 
-        </LinearLayout><!-- TERMINA: LinearLayout BOTONES SUPERIORES -->
-
-
+        </LinearLayout> <!-- TERMINA: LinearLayout BOTONES SUPERIORES -->
 
 
          <!-- LinearLayout LISTA -->

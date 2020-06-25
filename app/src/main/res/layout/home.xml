@@ -40,10 +40,11 @@
                     android:textSize="22dp"
                     />
                     <TextView android:layout_marginLeft="70dp"
-                    android:layout_width="match_parent"
+                    android:id="@+id/TextViewCurrentBalance"
+                        android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/carter_one"
-                    android:text="$150"
+                    android:text="$0"
                     android:textColor="#FF0000"
                     android:textSize="22dp"
                     />
@@ -62,12 +63,13 @@
                         android:textColor="#000000"
                         android:textSize="17dp"/>
                     <TextView
+                        android:id="@+id/TextViewCurrentIncomes"
                         android:layout_marginLeft="90dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                         android:fontFamily="@font/carter_one"
-                    android:text="$250"
+                    android:text="$0"
                     android:textColor="#FF0000"
                     android:textSize="17dp"/>
 
@@ -85,12 +87,13 @@
                         android:textColor="#000000"
                         android:textSize="17dp"/>
                     <TextView
+                        android:id="@+id/TextViewCurrentExpenses"
                         android:layout_marginLeft="75dp"
                         android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/carter_one"
-                        android:text="$100"
+                        android:text="$0"
                         android:textColor="#FF0000"
                         android:textSize="17dp"/>
                 </RelativeLayout>
@@ -108,12 +111,13 @@
                         android:textSize="17dp"/>
 
                     <TextView
+                        android:id="@+id/TextViewCurrentBalanceInAccount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="240dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/carter_one"
-                        android:text="$100"
+                        android:text="$0"
                         android:textColor="#FF0000"
                         android:textSize="17dp" />
                 </RelativeLayout>
@@ -133,25 +137,12 @@
 
 
             <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnExpenses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:layout_marginBottom="20dp"
-                app:nb_text="Gasto"
-                app:nb_borderColor="#FFFFFF"
-                app:nb_borderWidth="2dp"
-                app:nb_backgroundColor="#8E3DEF55"
-                app:nb_focusColor="#FF0000"
-                app:nb_textColor="#FFF"
-                app:nb_radius="5dp"
-                app:nb_fontIcon="&#xf067;"/>
-
-            <com.ornach.nobobutton.NoboButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginBottom="20dp"
-                app:nb_text="Ingreso"
+                app:nb_text="Gastos"
                 app:nb_borderColor="#FFFFFF"
                 app:nb_borderWidth="2dp"
                 app:nb_backgroundColor="#EF3D56"
@@ -161,6 +152,22 @@
                 app:nb_fontIcon="&#xf067;"/>
 
             <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnIncomes"
+                app:nb_backgroundColor="#8E3DEF55"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                app:nb_text="Ingresos"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_focusColor="#FF0000"
+                app:nb_textColor="#FFF"
+                app:nb_radius="5dp"
+                app:nb_fontIcon="&#xf067;"/>
+
+            <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnMyAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
