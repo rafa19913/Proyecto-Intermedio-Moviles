@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.proyecto_intermedio.R;
 
@@ -16,6 +17,8 @@ public class IncomesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.incomes);
         arrowBackMethod();
+
+
     }
 
     private void arrowBackMethod(){

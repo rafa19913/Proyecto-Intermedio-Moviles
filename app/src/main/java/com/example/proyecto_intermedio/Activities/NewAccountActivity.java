@@ -5,8 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.proyecto_intermedio.R;
+import com.example.proyecto_intermedio.SampleClasses.Account;
+
+import es.dmoral.toasty.Toasty;
 
 public class NewAccountActivity extends AppCompatActivity {
 
@@ -14,11 +18,17 @@ public class NewAccountActivity extends AppCompatActivity {
     public static EditText editTextOwnerName;
     public static EditText editTextBalance;
 
+    public static boolean userCreated = false;
+    private Intent in;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
+
         asignComponentsOfNewAccount();
+
+
     }
 
 
@@ -30,6 +40,7 @@ public class NewAccountActivity extends AppCompatActivity {
         btnAcept = findViewById(R.id.BtnAceptNewAccount);
         editTextOwnerName = findViewById(R.id.EditTextOwnerName);
         editTextBalance = findViewById(R.id.EditTextBalance);
+
 
         btnAcept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +67,21 @@ public class NewAccountActivity extends AppCompatActivity {
      * Se abre el home.xml y el activity Home.Java
      */
     private void openHome(){
-        Intent in = new Intent(this,HomeActivity.class);
+        createObjectAccount();
+        in = new Intent(this,HomeActivity.class);
         startActivity(in);
+
         //cleanEditTexts();
+    }
+
+    /**
+     * Se crea el objeto Account de Account.java
+     */
+    private void createObjectAccount(){
+        String name = editTextOwnerName.getText().toString();
+        double balance = Double.parseDouble(editTextBalance.getText().toString());
+        Account.myAccount = new Account(name,balance);
+        Toasty.success(this, "¡Cuenta creada correctamente!", Toast.LENGTH_SHORT, true).show();
     }
 
     /**
@@ -101,8 +124,5 @@ public class NewAccountActivity extends AppCompatActivity {
     private static boolean validateOwner(String name){
         return true;
     }
-
-
-
 
 }

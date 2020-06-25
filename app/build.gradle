@@ -26,6 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'com.github.GrenderG:Toasty:1.4.2'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.ornach.nobobutton:nobobutton:1.6'
     implementation 'androidx.appcompat:appcompat:1.1.0'

@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.proyecto_intermedio.R;
+import com.example.proyecto_intermedio.SampleClasses.Account;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -15,11 +17,15 @@ public class HomeActivity extends AppCompatActivity {
     public static com.ornach.nobobutton.NoboButton btnExpense,btnIncomes,btnMyAccount;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        NewAccountActivity.userCreated = true;
+
+        Toast.makeText(this, "Entro en Home activity", Toast.LENGTH_SHORT).show();
+
         asignComponentsOfHome();
         addInformationOfAccount();
         addListenersOfButtonsHome();
@@ -40,10 +46,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
-     * Se agrega la información de la cuenta creada por PRIMERA VEZ
+     * Se agrega la información de la cuenta creada por PRIMERA VEZ y se agrega un objeto de Account.java
      */
     private void addInformationOfAccount(){
-        currentBalanceInAccount.setText(NewAccountActivity.editTextBalance.getText().toString());
+        String balance = "$"+String.valueOf(Account.myAccount.getBalance());
+        currentBalanceInAccount.setText(balance);
     }
 
     /**
@@ -94,5 +101,16 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyAccountActivity.class);
         startActivity(intent);
     }
+
+
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_CANCELED);
+        super.onBackPressed();
+
+
+    }
+
 
 }

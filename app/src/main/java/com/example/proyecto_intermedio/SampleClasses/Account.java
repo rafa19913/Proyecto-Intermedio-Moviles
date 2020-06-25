@@ -1,9 +1,18 @@
 package com.example.proyecto_intermedio.SampleClasses;
 
+import android.widget.ImageView;
+
+import java.util.ArrayList;
+
 public class Account {
+
+    public static Account myAccount;
 
     private String ownerName;
     private double balance;
+    private String profilePhotoPath;
+    private ArrayList<Expense> expenses;
+    private ArrayList<Income> incomes;
 
     public Account(String ownerName, double balance){
         this.ownerName = ownerName;
@@ -26,6 +35,30 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhotoPath;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhotoPath = profilePhoto;
+    }
+
+    public ArrayList<Expense> getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(ArrayList<Expense> expenses) {
+        this.expenses = expenses;
+    }
+
+    public ArrayList<Income> getIncomes() {
+        return incomes;
+    }
+
+    public void setIncomes(ArrayList<Income> incomes) {
+        this.incomes = incomes;
     }
 
     @Override
