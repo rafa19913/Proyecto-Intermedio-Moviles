@@ -28,7 +28,6 @@ public class NewAccountActivity extends AppCompatActivity {
 
         asignComponentsOfNewAccount();
 
-
     }
 
 

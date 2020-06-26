@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Abrirá el create_account.xml dónde se asignan los componentes para crear una cuenta
+     * Abrirá directamente el create_account.xml dónde se asignan los componentes para crear una cuenta
      */
     private void createFirstAccount(){
         Intent in = new Intent(this,NewAccountActivity.class);

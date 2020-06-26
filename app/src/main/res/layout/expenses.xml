@@ -50,6 +50,7 @@
 
 
             <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnAddExpense"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,7 +65,7 @@
                 app:nb_fontIcon="&#xf067;"/>
 
             <com.ornach.nobobutton.NoboButton
-                android:id="@+id/BtnEliminarGasto"
+                android:id="@+id/BtnDeleteExpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -78,6 +79,7 @@
                 app:nb_fontIcon="&#xf014;"/>
 
             <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnEditExpense"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,14 +109,14 @@
                     >
 
              <Button
-                 android:id="@+id/BtnClear"
+                 android:id="@+id/BtnClearExpense"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="Clear"
                  android:layout_gravity="center_horizontal"
                  />
                 <ListView
-                    android:id="@+id/ListViewGastos"
+                    android:id="@+id/ListViewExpenses"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />

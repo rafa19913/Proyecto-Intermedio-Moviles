@@ -44,6 +44,20 @@
             android:layout_height="100dp"
             />
 
+            <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnEditProfilePhoto"
+                android:layout_marginTop="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_backgroundColor="#8EA6A5A3"
+                app:nb_focusColor="#FF0000"
+                app:nb_textColor="#FFF"
+                app:nb_radius="5dp"
+                app:nb_fontIcon="&#xf040;"/>
+
         </androidx.cardview.widget.CardView>
 
         <!-- LinearLayout BOX SUPERIOR -->
@@ -75,7 +89,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Juan Perez Rosales"
+                    android:text=""
                     android:fontFamily="@font/candal"
                     android:textColor="#FF0000"
                     />
@@ -102,7 +116,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$600:"
+                    android:text=""
                     android:fontFamily="@font/candal"
                     android:textColor="#FF0000"
                     />
