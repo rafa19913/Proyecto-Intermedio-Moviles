@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.proyecto_intermedio.Activities.MyAccountActivity;
+import com.example.proyecto_intermedio.Activities.HomeActivity;
 import com.example.proyecto_intermedio.R;
 import com.example.proyecto_intermedio.SampleClasses.Account;
 import com.example.proyecto_intermedio.SampleClasses.Expense;
@@ -17,10 +17,8 @@ import com.example.proyecto_intermedio.SampleClasses.Income;
 import es.dmoral.toasty.Toasty;
 
 import static com.example.proyecto_intermedio.Activities.ExpensesActivity.adapterListOfExpense;
-import static com.example.proyecto_intermedio.Activities.ExpensesActivity.listOfExpenses;
 import static com.example.proyecto_intermedio.Activities.ExpensesActivity.listViewOfExpenses;
 import static com.example.proyecto_intermedio.Activities.IncomesActivity.adapterListOfIncomes;
-import static com.example.proyecto_intermedio.Activities.IncomesActivity.listOfIncomes;
 import static com.example.proyecto_intermedio.Activities.IncomesActivity.listViewOfIncomes;
 
 public class Dialog {
@@ -95,8 +93,8 @@ public class Dialog {
 
 
 
-    public static void dialogEdit(final Context cx, final int position, String typeToEdit){
-        changeTypeOfEdit(typeToEdit);
+    public static void dialogEdit(final Context cx, final int position, String type){
+        changeTypeOfEdit(type);
 
         final android.app.Dialog dialog = new android.app.Dialog(cx);
         final EditText dialogName;
@@ -105,29 +103,49 @@ public class Dialog {
         final EditText dialogDescription;
         Button btnAcept;
 
-        dialog.setContentView(R.layout.customdialog_add);
-        dialog.setTitle("Editar " + typeToEdit); // Ejemplo: "Editar Ingreso" "Editar Gasto"
+        dialog.setContentView(R.layout.customdialog_edit);
+        dialog.setTitle("Editar " + type); // Ejemplo: "Editar Ingreso" "Editar Gasto"
 
         dialogName = dialog.findViewById(R.id.DialogEditTextName);
         dialogAmount = dialog.findViewById(R.id.DialogEditTextAmount);
         dialogDate = dialog.findViewById(R.id.DialogEditTextDate);
         dialogDescription = dialog.findViewById(R.id.DialogEditTextDescription);
 
-        btnAcept = dialog.findViewById(R.id.DialogButtonAceptar);
+        com.ornach.nobobutton.NoboButton btnEdit = dialog.findViewById(R.id.BtnEdit);
+        com.ornach.nobobutton.NoboButton btnDelete = dialog.findViewById(R.id.BtnDelete);
 
         if (typeOfEdit == "Ingreso"){
-            dialogName.setText(listOfIncomes.get(position).getNameOfIncome());
-            dialogAmount.setText(String.valueOf(listOfIncomes.get(position).getAmount()));
-            dialogDate.setText(listOfIncomes.get(position).getDate());
-            dialogDescription.setText(listOfIncomes.get(position).getDescription());
+            dialogName.setText(Account.myAccount.incomes.get(position).getNameOfIncome());
+            dialogAmount.setText(String.valueOf(Account.myAccount.incomes.get(position).getAmount()));
+            dialogDate.setText(Account.myAccount.incomes.get(position).getDate());
+            dialogDescription.setText(Account.myAccount.incomes.get(position).getDescription());
         }else{
-            dialogName.setText(listOfExpenses.get(position).getNameOfExpense());
-            dialogAmount.setText(String.valueOf(listOfExpenses.get(position).getAmount()));
-            dialogDate.setText(listOfExpenses.get(position).getDate());
-            dialogDescription.setText(listOfExpenses.get(position).getDescription());
+            dialogName.setText(Account.myAccount.expenses.get(position).getNameOfExpense());
+            dialogAmount.setText(String.valueOf(Account.myAccount.expenses.get(position).getAmount()));
+            dialogDate.setText(Account.myAccount.expenses.get(position).getDate());
+            dialogDescription.setText(Account.myAccount.expenses.get(position).getDescription());
         }
 
-        btnAcept.setOnClickListener(new View.OnClickListener() {
+
+         btnDelete.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 if (typeOfEdit == "Ingreso"){
+                     Account.myAccount.incomes.remove(position);
+                     Toasty.success(cx, "Se eliminó un ingreso ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
+                     refreshListOfIncomes(cx);
+                     HomeActivity.updateInformationOfHome();
+                 }else{
+                     Account.myAccount.expenses.remove(position);
+                     Toasty.success(cx, "Se eliminó un gasto ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
+                    refresListOfExpense(cx);
+                     HomeActivity.updateInformationOfHome();
+                 }
+                 dialog.dismiss();
+             }
+         });
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = dialogName.getText().toString();
@@ -137,11 +155,13 @@ public class Dialog {
 
                 if (typeOfEdit == "Ingreso"){
                     editIncome(position,name,amount,date,description,cx);
-                    dialog.dismiss();
+                    HomeActivity.updateInformationOfHome();
                 }else{
                     editExpense(position,name,amount,date,description,cx);
-                    dialog.dismiss();
+                    HomeActivity.updateInformationOfHome();
+
                 }
+                dialog.dismiss();
 
             }
         });
@@ -152,20 +172,20 @@ public class Dialog {
 
     // -- Faltan validaciones --
     private static void editIncome(int position,String name, double amount, String date, String desc, Context cx){
-        listOfIncomes.set(position,listOfIncomes.get(position)).setNameOfIncome(name);
-        listOfIncomes.set(position,listOfIncomes.get(position)).setAmount(amount);
-        listOfIncomes.set(position,listOfIncomes.get(position)).setDate(date);
-        listOfIncomes.set(position,listOfIncomes.get(position)).setDescription(desc);
+        Account.myAccount.incomes.set(position,Account.myAccount.incomes.get(position)).setNameOfIncome(name);
+        Account.myAccount.incomes.set(position,Account.myAccount.incomes.get(position)).setAmount(amount);
+        Account.myAccount.incomes.set(position,Account.myAccount.incomes.get(position)).setDate(date);
+        Account.myAccount.incomes.set(position,Account.myAccount.incomes.get(position)).setDescription(desc);
         adapterListOfIncomes.notifyDataSetChanged();
         Toasty.success(cx, "Se editó un ingreso ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
         typeOfEdit = "";
     }
 
     private static void editExpense(int position,String name, double amount, String date, String desc, Context cx){
-        listOfExpenses.set(position,listOfExpenses.get(position)).setNameOfExpense(name);
-        listOfExpenses.set(position,listOfExpenses.get(position)).setAmount(amount);
-        listOfExpenses.set(position,listOfExpenses.get(position)).setDate(date);
-        listOfExpenses.set(position,listOfExpenses.get(position)).setDescription(desc);
+        Account.myAccount.expenses.set(position,Account.myAccount.expenses.get(position)).setNameOfExpense(name);
+        Account.myAccount.expenses.set(position,Account.myAccount.expenses.get(position)).setAmount(amount);
+        Account.myAccount.expenses.set(position,Account.myAccount.expenses.get(position)).setDate(date);
+        Account.myAccount.expenses.set(position,Account.myAccount.expenses.get(position)).setDescription(desc);
         adapterListOfExpense.notifyDataSetChanged();
         Toasty.success(cx, "Se editó un ingreso ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
         typeOfEdit = "";
@@ -176,29 +196,33 @@ public class Dialog {
     private static void addIncome(String name,double amount,String date,String desc,Context cx){
         Income income = new Income(name,amount,desc,date);
         Toasty.success(cx, "Se agregó un ingreso ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
-        listOfIncomes.add(income);
+        Account.myAccount.incomes.add(income);
         typeOfAdd = "";
         refreshListOfIncomes(cx);
+        HomeActivity.updateInformationOfHome();
     }
 
     public static void refreshListOfIncomes(Context cx){
-        adapterListOfIncomes = new ArrayAdapter<>(cx,android.R.layout.simple_list_item_1,listOfIncomes);
+        adapterListOfIncomes = new ArrayAdapter<>(cx,android.R.layout.simple_list_item_1,Account.myAccount.incomes);
         listViewOfIncomes.setAdapter(adapterListOfIncomes);
         adapterListOfIncomes.notifyDataSetChanged();
+        HomeActivity.updateInformationOfHome();
     }
 
     public static void refresListOfExpense(Context cx){
-        adapterListOfExpense = new ArrayAdapter<>(cx,android.R.layout.simple_list_item_activated_1,listOfExpenses);
+        adapterListOfExpense = new ArrayAdapter<>(cx,android.R.layout.simple_list_item_activated_1,Account.myAccount.expenses);
         listViewOfExpenses.setAdapter(adapterListOfExpense);
         adapterListOfExpense.notifyDataSetChanged();
+        HomeActivity.updateInformationOfHome();
 
     }
 
     private static void addExpense(String name,double amount,String date,String desc,Context cx){
         Expense expense = new Expense(name,amount,desc,date);
-        listOfExpenses.add(expense);
+        Account.myAccount.expenses.add(expense);
         refresListOfExpense(cx);
         Toasty.success(cx, "Se agregó un gasto ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
+        HomeActivity.updateInformationOfHome();
     }
 
 

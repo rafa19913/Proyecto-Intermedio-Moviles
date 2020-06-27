@@ -14,20 +14,17 @@ import android.widget.Toast;
 import com.example.proyecto_intermedio.Components.Dialog;
 import com.example.proyecto_intermedio.R;
 import com.example.proyecto_intermedio.SampleClasses.Expense;
-import com.example.proyecto_intermedio.SampleClasses.Income;
 
-import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 
 public class ExpensesActivity extends AppCompatActivity {
 
     private ImageView arrowBack;
-    private com.ornach.nobobutton.NoboButton btnDeleteExpense,btnEditExpense,btnAddExpense;
+    private com.ornach.nobobutton.NoboButton btnAddExpense;
     private Button btnClearExpenses;
 
     public static ListView listViewOfExpenses;
-    public static ArrayList<Expense> listOfExpenses = new ArrayList<>();
     public static ArrayAdapter<Expense> adapterListOfExpense;
 
     @Override
@@ -38,6 +35,7 @@ public class ExpensesActivity extends AppCompatActivity {
         asignComponentsOfExpenses();
         addListenersOfExpenses();
         addInformationOfExpenses();
+
     }
 
     /**
@@ -45,8 +43,6 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     private void asignComponentsOfExpenses(){
         arrowBack = findViewById(R.id.arrowback);
-        //btnDeleteExpense = findViewById(R.id.BtnDeleteExpense);
-        //btnEditExpense = findViewById(R.id.BtnEditExpense);
         btnAddExpense = findViewById(R.id.BtnAddExpense);
         btnClearExpenses = findViewById(R.id.BtnClearExpense);
         listViewOfExpenses = findViewById(R.id.ListViewExpenses);
@@ -62,18 +58,6 @@ public class ExpensesActivity extends AppCompatActivity {
                 goHome();
             }
         });
-    /*    btnDeleteExpense.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteExpense();
-            }
-        });
-        btnEditExpense.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editExpenses();
-            }
-        });*/
         btnAddExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,14 +70,10 @@ public class ExpensesActivity extends AppCompatActivity {
                 cleanCheckBoxOfExpenses();
             }
         });
-
         listViewOfExpenses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                editExpense(position);
-            }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { editExpense(position); }
         });
-
     }
 
 
@@ -104,22 +84,16 @@ public class ExpensesActivity extends AppCompatActivity {
     private void addInformationOfExpenses(){
         Dialog.refresListOfExpense(this);
     }
-
-
     private void cleanCheckBoxOfExpenses(){
         Toasty.success(this, "Se limpiaran los gasto", Toast.LENGTH_SHORT).show();
     }
-
     private void addExpense(){
         Dialog.dialogAdd(this,"Gasto");
+        HomeActivity.updateInformationOfHome();
     }
-
     private void editExpense(int position){
         Dialog.dialogEdit(this,position,"Gasto");
-    }
-
-    private void deleteExpense(){
-        Toasty.success(this, "Se eliminarán gastos", Toast.LENGTH_SHORT).show();
+        HomeActivity.updateInformationOfHome();
     }
 
 
@@ -137,6 +111,7 @@ public class ExpensesActivity extends AppCompatActivity {
     public void onBackPressed() {
         setResult(RESULT_CANCELED);
         super.onBackPressed();
+        HomeActivity.updateInformationOfHome();
     }
 
 }

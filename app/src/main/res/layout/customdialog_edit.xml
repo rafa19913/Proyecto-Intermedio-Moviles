@@ -75,7 +75,7 @@
         >
 
             <com.ornach.nobobutton.NoboButton
-                android:id="@+id/BtnEditExpense"
+                android:id="@+id/BtnEdit"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
 
 
         <com.ornach.nobobutton.NoboButton
-            android:id="@+id/BtnDeleteExpense"
+            android:id="@+id/BtnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"

@@ -64,7 +64,8 @@
                 app:nb_focusColor="#22FF00"
                 app:nb_textColor="#FFF"
                 app:nb_radius="5dp"
-                app:nb_fontIcon="&#xf067;"/>
+                app:nb_fontIcon="&#xf067;"
+                />
 
 
 

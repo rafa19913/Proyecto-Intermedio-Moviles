@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.home);
 
         asignComponentsOfHome();
-        addInformationOfAccount();
+        addInformationOfHome();
         addListenersOfButtonsHome();
 
     }
@@ -44,9 +44,19 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Se agrega la información a los Text View de la cuenta creada (Pagos, Gastos, Saldo, etc)
      */
-    private void addInformationOfAccount(){
-        String balance = "$"+Account.myAccount.getBalance();
-        currentBalanceInAccount.setText(balance);
+    private void addInformationOfHome(){
+        currentExpenses.setText(String.valueOf(Account.myAccount.getTotalOfExpenses()));
+        currentIncomes.setText(String.valueOf(Account.myAccount.getTotalOfIncomes()));
+        currentBalance.setText(String.valueOf(Account.myAccount.getCurrentBalance()));
+        currentBalanceInAccount.setText(String.valueOf(Account.myAccount.getTotalCurrentBalanceInAccount()));
+    }
+
+
+    public static void updateInformationOfHome(){
+        currentExpenses.setText(String.valueOf(Account.myAccount.getTotalOfExpenses()));
+        currentIncomes.setText(String.valueOf(Account.myAccount.getTotalOfIncomes()));
+        currentBalance.setText(String.valueOf(Account.myAccount.getCurrentBalance()));
+        currentBalanceInAccount.setText(String.valueOf(Account.myAccount.getTotalCurrentBalanceInAccount()));
     }
 
     /**

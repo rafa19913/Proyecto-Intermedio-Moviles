@@ -1,6 +1,6 @@
 package com.example.proyecto_intermedio.SampleClasses;
 
-import android.widget.ImageView;
+
 
 import java.util.ArrayList;
 
@@ -11,14 +11,45 @@ public class Account {
     private String ownerName;
     private double balance;
     private String profilePhotoPath;
-    private ArrayList<Expense> expenses;
-    private ArrayList<Income> incomes;
+    public ArrayList<Expense> expenses;
+    public ArrayList<Income> incomes;
 
     public Account(String ownerName, double balance){
+        expenses  = new ArrayList<>();
+        incomes  = new ArrayList<>();
         this.ownerName = ownerName;
         this.balance = balance;
     }
 
+
+    public double getTotalOfIncomes(){
+        double totalAux = 0.0;
+        for (int i=0; i < incomes.size(); i++){
+            totalAux+= incomes.get(i).getAmount();
+        }
+        return totalAux;
+    }
+
+
+    public double getTotalOfExpenses(){
+        double totalAux = 0.0;
+        for (int i=0; i < expenses.size(); i++){
+            totalAux+= expenses.get(i).getAmount();
+        }
+        return totalAux;
+    }
+
+    public double getCurrentBalance(){
+        double totalExpenses = getTotalOfExpenses();
+        double totalIncomes = getTotalOfIncomes();
+        return (totalIncomes-totalExpenses);
+    }
+
+    public double getTotalCurrentBalanceInAccount(){
+        double totalExpenses = getTotalOfExpenses();
+        double totalIncomes = getTotalOfIncomes();
+        return ((balance+totalIncomes) - totalExpenses);
+    }
 
     // -- Getters y Setters -- //
     public String getOwnerName() {
