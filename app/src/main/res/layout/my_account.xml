@@ -13,6 +13,7 @@
         >
 
         <ImageView
+            android:layout_margin="5dp"
             android:id="@+id/arrowback"
             android:layout_width="50dp"
             android:layout_height="20dp"
@@ -149,7 +150,7 @@
                 app:nb_borderColor="#FFFFFF"
                 app:nb_borderWidth="2dp"
                 app:nb_backgroundColor="#8EFFAA00"
-                app:nb_focusColor="#FF0000"
+                app:nb_focusColor="#FFFF00"
                 app:nb_textColor="#FFF"
                 app:nb_radius="5dp"
                 app:nb_fontIcon="&#xf040;"/>

@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.proyecto_intermedio.Components.Dialog;
 import com.example.proyecto_intermedio.R;
+import com.example.proyecto_intermedio.SampleClasses.Expense;
+import com.example.proyecto_intermedio.SampleClasses.Income;
+
+import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 
@@ -18,7 +25,10 @@ public class ExpensesActivity extends AppCompatActivity {
     private ImageView arrowBack;
     private com.ornach.nobobutton.NoboButton btnDeleteExpense,btnEditExpense,btnAddExpense;
     private Button btnClearExpenses;
-    private ListView listOfExpenses;
+
+    public static ListView listViewOfExpenses;
+    public static ArrayList<Expense> listOfExpenses = new ArrayList<>();
+    public static ArrayAdapter<Expense> adapterListOfExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,7 @@ public class ExpensesActivity extends AppCompatActivity {
 
         asignComponentsOfExpenses();
         addListenersOfExpenses();
+        addInformationOfExpenses();
     }
 
     /**
@@ -34,11 +45,11 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     private void asignComponentsOfExpenses(){
         arrowBack = findViewById(R.id.arrowback);
-        btnDeleteExpense = findViewById(R.id.BtnDeleteExpense);
-        btnEditExpense = findViewById(R.id.BtnEditExpense);
+        //btnDeleteExpense = findViewById(R.id.BtnDeleteExpense);
+        //btnEditExpense = findViewById(R.id.BtnEditExpense);
         btnAddExpense = findViewById(R.id.BtnAddExpense);
         btnClearExpenses = findViewById(R.id.BtnClearExpense);
-        listOfExpenses = findViewById(R.id.ListViewExpenses);
+        listViewOfExpenses = findViewById(R.id.ListViewExpenses);
     }
 
     /**
@@ -51,7 +62,7 @@ public class ExpensesActivity extends AppCompatActivity {
                 goHome();
             }
         });
-        btnDeleteExpense.setOnClickListener(new View.OnClickListener() {
+    /*    btnDeleteExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteExpense();
@@ -62,7 +73,7 @@ public class ExpensesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 editExpenses();
             }
-        });
+        });*/
         btnAddExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +86,23 @@ public class ExpensesActivity extends AppCompatActivity {
                 cleanCheckBoxOfExpenses();
             }
         });
+
+        listViewOfExpenses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                editExpense(position);
+            }
+        });
+
+    }
+
+
+
+    /**
+     * Se agrega la lista de ingresos
+     */
+    private void addInformationOfExpenses(){
+        Dialog.refresListOfExpense(this);
     }
 
 
@@ -83,11 +111,11 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
     private void addExpense(){
-        Toasty.success(this, "Se agregará gasto", Toast.LENGTH_SHORT).show();
+        Dialog.dialogAdd(this,"Gasto");
     }
 
-    private void editExpenses(){
-        Toasty.success(this, "Se editara gasto", Toast.LENGTH_SHORT).show();
+    private void editExpense(int position){
+        Dialog.dialogEdit(this,position,"Gasto");
     }
 
     private void deleteExpense(){

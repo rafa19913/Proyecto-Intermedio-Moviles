@@ -161,7 +161,7 @@
                 app:nb_text="Ingresos"
                 app:nb_borderColor="#FFFFFF"
                 app:nb_borderWidth="2dp"
-                app:nb_focusColor="#FF0000"
+                app:nb_focusColor="#37FF00"
                 app:nb_textColor="#FFF"
                 app:nb_radius="5dp"
                 app:nb_fontIcon="&#xf067;"/>
@@ -176,7 +176,7 @@
                 app:nb_borderColor="#FFFFFF"
                 app:nb_borderWidth="2dp"
                 app:nb_backgroundColor="#812268FF"
-                app:nb_focusColor="#FF0000"
+                app:nb_focusColor="#3700FF"
                 app:nb_textColor="#FFF"
                 app:nb_radius="5dp"
                 app:nb_fontIcon="&#xf007;"/>

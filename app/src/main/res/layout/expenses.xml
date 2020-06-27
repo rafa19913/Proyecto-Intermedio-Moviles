@@ -16,6 +16,7 @@
             >
 
             <ImageView
+                android:layout_margin="5dp"
                 android:id="@+id/arrowback"
                 android:layout_width="50dp"
                 android:layout_height="20dp"
@@ -42,16 +43,17 @@
 
                 />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+
             >
 
 
             <com.ornach.nobobutton.NoboButton
                 android:id="@+id/BtnAddExpense"
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -59,41 +61,14 @@
                 app:nb_borderColor="#FFFFFF"
                 app:nb_borderWidth="2dp"
                 app:nb_backgroundColor="#8E3DEF55"
-                app:nb_focusColor="#FF0000"
+                app:nb_focusColor="#22FF00"
                 app:nb_textColor="#FFF"
                 app:nb_radius="5dp"
                 app:nb_fontIcon="&#xf067;"/>
 
-            <com.ornach.nobobutton.NoboButton
-                android:id="@+id/BtnDeleteExpense"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginBottom="20dp"
-                app:nb_borderColor="#FFFFFF"
-                app:nb_borderWidth="2dp"
-                app:nb_backgroundColor="#8EFF0000"
-                app:nb_focusColor="#FF0000"
-                app:nb_textColor="#FFF"
-                app:nb_radius="5dp"
-                app:nb_fontIcon="&#xf014;"/>
 
-            <com.ornach.nobobutton.NoboButton
-                android:id="@+id/BtnEditExpense"
-                android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginBottom="20dp"
-                app:nb_borderColor="#FFFFFF"
-                app:nb_borderWidth="2dp"
-                app:nb_backgroundColor="#8EFFAA00"
-                app:nb_focusColor="#FF0000"
-                app:nb_textColor="#FFF"
-                app:nb_radius="5dp"
-                app:nb_fontIcon="&#xf040;"/>
 
-        </RelativeLayout>
+        </LinearLayout>
 
         </LinearLayout> <!-- TERMINA: LinearLayout BOTONES SUPERIORES -->
 

@@ -27,16 +27,17 @@
                 android:orientation="vertical"
                 >
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="35dp"
-                    android:fontFamily="@font/candal"
-                    android:gravity="center_horizontal"
-                    android:text="Crear cuenta"
-                    android:textColor="#FFFF"
-                    android:textSize="50dp"
-                    />
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/candal"
+                        android:text="Crear Cuenta"
+                        android:textColor="#FFFF"
+                        android:textSize="45dp" />
+
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -108,7 +109,7 @@
                     app:nb_borderColor="#FFFFFF"
                     app:nb_borderWidth="2dp"
                     app:nb_backgroundColor="#1C4CE8"
-                    app:nb_focusColor="#FF0000"
+                    app:nb_focusColor="#FFFFFF"
                     app:nb_textColor="#FFF"
                     app:nb_radius="20dp"
                     />

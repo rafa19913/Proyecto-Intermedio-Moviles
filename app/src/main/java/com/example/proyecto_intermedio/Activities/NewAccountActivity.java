@@ -17,8 +17,6 @@ public class NewAccountActivity extends AppCompatActivity {
     public static com.ornach.nobobutton.NoboButton btnAcept;
     public static EditText editTextOwnerName;
     public static EditText editTextBalance;
-
-    public static boolean userCreated = false;
     private Intent in;
 
     @Override

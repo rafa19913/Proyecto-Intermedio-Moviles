@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="25dp"
+    android:background="@drawable/backgrounddialog"
+
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <EditText
+            android:inputType="text"
+            android:id="@+id/DialogEditTextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:ems="10"
+            android:fontFamily="cursive"
+            android:gravity="center_horizontal" />
+
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:id="@+id/DialogEditTextAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Monto"
+            android:ems="10"
+            android:fontFamily="cursive"
+            android:gravity="center_horizontal" />
+
+        <EditText
+            android:inputType="date"
+            android:id="@+id/DialogEditTextDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Fecha"
+            android:ems="10"
+            android:fontFamily="cursive"
+            android:gravity="center_horizontal" />
+
+        <EditText
+            android:inputType="text"
+            android:id="@+id/DialogEditTextDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Descripción"
+            android:ems="10"
+            android:fontFamily="cursive"
+            android:gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/DialogButtonAceptar"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/background_button_dialog"
+            android:text="Aceptar"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</LinearLayout>
