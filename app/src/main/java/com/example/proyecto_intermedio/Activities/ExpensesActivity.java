@@ -18,6 +18,12 @@ import com.example.proyecto_intermedio.SampleClasses.Expense;
 
 import es.dmoral.toasty.Toasty;
 
+import static com.example.proyecto_intermedio.Components.Dialog.dialogs;
+
+/**
+ * Clase: ExpensesActivity se encarga de los gastos agregados, editados
+ * en base a: expenses.xml
+ */
 public class ExpensesActivity extends AppCompatActivity {
 
     private ImageView arrowBack;
@@ -87,12 +93,21 @@ public class ExpensesActivity extends AppCompatActivity {
     private void cleanCheckBoxOfExpenses(){
         Toasty.success(this, "Se limpiaran los gasto", Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * Se manda llamar el dialogAdd para agregar un nuevo Gasto
+     */
     private void addExpense(){
-        Dialog.dialogAdd(this,"Gasto");
+        dialogs.dialogAdd(this,"Gasto");
         HomeActivity.updateInformationOfHome();
     }
+
+    /**
+     * Se manda llamar el dialogEdit para abrir el dialog y editar un Gasto en base
+     * @param position del item seleccionado de la lista
+     */
     private void editExpense(int position){
-        Dialog.dialogEdit(this,position,"Gasto");
+        dialogs.dialogEdit(this,position,"Gasto");
         HomeActivity.updateInformationOfHome();
     }
 

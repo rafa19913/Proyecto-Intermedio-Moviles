@@ -36,6 +36,11 @@
             android:fontFamily="cursive"
             android:gravity="center_horizontal" />
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+
         <EditText
             android:inputType="date"
             android:id="@+id/DialogEditTextDate"
@@ -45,6 +50,19 @@
             android:ems="10"
             android:fontFamily="cursive"
             android:gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/BtnAuxFecha"
+                android:layout_width="207dp"
+                android:layout_height="34dp"
+                android:gravity="center_horizontal"
+                android:text="Fecha"
+                android:color="#66FF0000"
+                android:alpha="0"
+            />
+
+
+        </RelativeLayout>
 
         <EditText
             android:inputType="text"
@@ -65,12 +83,13 @@
         >
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         >
+
 
         <Button
             android:layout_marginTop="10dp"
@@ -81,5 +100,7 @@
             android:text="Aceptar"
             android:textColor="#FFFFFF" />
 
-    </LinearLayout>
+
+
+    </RelativeLayout>
 </LinearLayout>

@@ -31,6 +31,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
+                    <TextView
+                        android:id="@+id/TextViewOnChange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="AUX FECHA"
+                        android:color="#66FF0000"
+                        android:alpha="0"
+                        />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -180,6 +189,21 @@
                 app:nb_textColor="#FFF"
                 app:nb_radius="5dp"
                 app:nb_fontIcon="&#xf007;"/>
+
+            <com.ornach.nobobutton.NoboButton
+                android:id="@+id/BtnExport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                app:nb_text="Exportar"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_backgroundColor="#81FF2243"
+                app:nb_focusColor="#FF001E"
+                app:nb_textColor="#FFF"
+                app:nb_radius="5dp"
+                app:nb_fontIcon="&#xf1c1;"/>
 
 
         </LinearLayout> <!-- TERMINA: LinearLayout de botones -->

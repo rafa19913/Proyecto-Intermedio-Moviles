@@ -91,7 +91,7 @@ public class MyAccountActivity extends AppCompatActivity {
      * Se agrega la información de la cuenta: (Nombre del propietario, saldo actual, foto de perfil)
      */
     private void addInformationOfMyAccount(){
-        String balance = "$"+Account.myAccount.getBalance();
+        String balance = "$"+Account.myAccount.getTotalCurrentBalanceInAccount();
         String name = Account.myAccount.getOwnerName();
         String photoPath = Account.myAccount.getProfilePhoto();
 

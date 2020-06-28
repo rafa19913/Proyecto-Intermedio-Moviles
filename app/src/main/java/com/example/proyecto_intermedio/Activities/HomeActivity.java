@@ -6,23 +6,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.proyecto_intermedio.R;
 import com.example.proyecto_intermedio.SampleClasses.Account;
 
+/**
+ * Clase: HomeActivity se encarga de la interactividad principal con
+ * las demas pantallas (Ingresos, Gastos, Mi cuenta) y muestra el Saldo, Gastos, Ingresos, Credito actualizado
+ */
 public class HomeActivity extends AppCompatActivity {
 
     public static TextView currentBalance,currentIncomes,currentExpenses,currentBalanceInAccount;
-    public static com.ornach.nobobutton.NoboButton btnExpense,btnIncomes,btnMyAccount;
+    public static com.ornach.nobobutton.NoboButton btnExpense,btnIncomes,btnMyAccount,btnExport;
     private Intent intent;
+
+
+
+    public static TextView onChangeDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        onChangeDate = findViewById(R.id.TextViewOnChange);
+
+
         asignComponentsOfHome();
-        addInformationOfHome();
+        updateInformationOfHome();
         addListenersOfButtonsHome();
 
     }
@@ -39,24 +51,18 @@ public class HomeActivity extends AppCompatActivity {
         btnExpense = findViewById(R.id.BtnExpenses);
         btnIncomes = findViewById(R.id.BtnIncomes);
         btnMyAccount = findViewById(R.id.BtnMyAccount);
+        btnExport = findViewById(R.id.BtnExport);
     }
 
     /**
-     * Se agrega la información a los Text View de la cuenta creada (Pagos, Gastos, Saldo, etc)
+     * Método utilizado en otras clases como: IncomesActivity y ExpensesActivity para actualizar los pagos
+     * en los TextViews
      */
-    private void addInformationOfHome(){
-        currentExpenses.setText(String.valueOf(Account.myAccount.getTotalOfExpenses()));
-        currentIncomes.setText(String.valueOf(Account.myAccount.getTotalOfIncomes()));
-        currentBalance.setText(String.valueOf(Account.myAccount.getCurrentBalance()));
-        currentBalanceInAccount.setText(String.valueOf(Account.myAccount.getTotalCurrentBalanceInAccount()));
-    }
-
-
     public static void updateInformationOfHome(){
-        currentExpenses.setText(String.valueOf(Account.myAccount.getTotalOfExpenses()));
-        currentIncomes.setText(String.valueOf(Account.myAccount.getTotalOfIncomes()));
-        currentBalance.setText(String.valueOf(Account.myAccount.getCurrentBalance()));
-        currentBalanceInAccount.setText(String.valueOf(Account.myAccount.getTotalCurrentBalanceInAccount()));
+        currentExpenses.setText("$"+String.valueOf(Account.myAccount.getTotalOfExpenses()));
+        currentIncomes.setText("$"+String.valueOf(Account.myAccount.getTotalOfIncomes()));
+        currentBalance.setText("$"+String.valueOf(Account.myAccount.getCurrentBalance()));
+        currentBalanceInAccount.setText("$"+String.valueOf(Account.myAccount.getTotalCurrentBalanceInAccount()));
     }
 
     /**
@@ -81,7 +87,14 @@ public class HomeActivity extends AppCompatActivity {
                 openActivityMyAccount();
             }
         });
+        btnExport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityExportPDF();
+            }
+        });
     }
+
 
 
     /**
@@ -107,5 +120,14 @@ public class HomeActivity extends AppCompatActivity {
         intent = new Intent(this, MyAccountActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * Se abre la actividad de exportarPDF de: export_pdf.xml
+     */
+    private void openActivityExportPDF(){
+        intent = new Intent(this,ExportActivity.class);
+        startActivity(intent);
+    }
+
 
 }

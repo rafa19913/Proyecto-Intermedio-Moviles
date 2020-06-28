@@ -4,6 +4,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.example.proyecto_intermedio"
         minSdkVersion 16
@@ -26,6 +31,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'com.applandeo:material-calendar-view:1.7.0'
     implementation 'com.github.GrenderG:Toasty:1.4.2'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.ornach.nobobutton:nobobutton:1.6'

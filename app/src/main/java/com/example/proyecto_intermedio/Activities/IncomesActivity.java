@@ -18,6 +18,12 @@ import com.example.proyecto_intermedio.SampleClasses.Income;
 
 import es.dmoral.toasty.Toasty;
 
+import static com.example.proyecto_intermedio.Components.Dialog.dialogs;
+
+/**
+ * Clase: IncomesActivity se encarga de los ingresos agregados, editados
+ * en base a: expenses.xml
+ */
 public class IncomesActivity extends AppCompatActivity {
 
     private ImageView arrowBack;
@@ -49,7 +55,7 @@ public class IncomesActivity extends AppCompatActivity {
     }
 
     /**
-     * Se agregan los listener de (Agrega ingreso, eliminar ingreso, editar ingreso)
+     * Se agregan los listener de (Agrega ingreso, eliminar ingreso, editar ingreso, seleccion de lista)
      */
     private void addListenersOfIncomes(){
         arrowBack.setOnClickListener(new View.OnClickListener() {
@@ -89,21 +95,33 @@ public class IncomesActivity extends AppCompatActivity {
         Toasty.success(this, "Se Limpiaran los checkbox", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Se manda llamar el dialogAdd para abrir el dialog y agregar un nuevo Ingreso
+     */
     private void addIncome(){
-        Dialog.dialogAdd(this,"Ingreso");
+        dialogs.dialogAdd(this,"Ingreso");
         HomeActivity.updateInformationOfHome();
     }
 
+    /**
+     * Se manda llamar el dialogEdit para abrir el dialog y editar un Ingreso
+     * @param position del item seleccionado de la lista
+     */
     private void editIncome(int position){
-        Dialog.dialogEdit(this,position,"Ingreso");
+        dialogs.dialogEdit(this,position,"Ingreso");
         HomeActivity.updateInformationOfHome();
     }
 
-
+    /**
+     * Se dirige al HomeActivity.java
+     */
     private void goHome(){
         onBackPressed();
     }
 
+    /**
+     * Listener cuando el usuario presiona el botón back del dispositivo
+     */
     @Override
     public void onBackPressed() {
         setResult(RESULT_CANCELED);
