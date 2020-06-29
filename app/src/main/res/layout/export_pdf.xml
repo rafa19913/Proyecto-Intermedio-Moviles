@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
 
     <!-- EMPIEZA: LinearLayout CONTENEDOR -->
     <LinearLayout
@@ -20,55 +23,139 @@
             android:src="@drawable/arrowback"
             />
 
-
-        <!-- LinearLayout BOX SUPERIOR -->
+        <!-- LinearLayout BOTONES SUPERIORES -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:padding="25dp"
             android:background="#FFFF"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Aqui se exportaran pdfs con rango de fechas"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/bevan"
+                android:text="Exportar a PDF"
+                android:textSize="20dp"
+
                 />
 
-
-
-            <!-- LinearLayout BOX SUPERIOR -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
-
                 >
 
 
-            </LinearLayout> <!-- TERMINA: BOX SUPERIOR -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Rango de fechas"
+                    android:textSize="20dp"
+
+                    />
 
 
-        </LinearLayout> <!-- TERMINA: BOX SUPERIOR -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <Button
+                            android:id="@+id/BtnDateBegin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:alpha="0"
+                            />
+                    <EditText
+                        android:inputType="text"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/EditTextDateBegin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:ems="10"
+                        android:hint="Fecha de inicio"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        />
+                    </RelativeLayout>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <Button
+                            android:alpha="0"
+                            android:id="@+id/BtnDateFinish"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                <EditText
+                    android:inputType="text"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/EditTextDateFinish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:ems="10"
+                    android:hint="Fecha de término"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"/>
+
+                    </RelativeLayout>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFFF"
-            android:layout_margin="10dp"
-            android:padding="25dp"
-            android:gravity="center_horizontal"
-            >
+                <com.ornach.nobobutton.NoboButton
+                    android:id="@+id/BtnExport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:padding="10dp"
+                    app:nb_backgroundColor="#81FF2243"
+                    app:nb_borderColor="#FFFFFF"
+                    app:nb_borderWidth="2dp"
+                    app:nb_focusColor="#FF001E"
+                    app:nb_fontIcon="&#xf1c1;"
+                    app:nb_radius="5dp"
+                    app:nb_text="Generar PDF"
+                    app:nb_textColor="#FFF" />
+
+            </LinearLayout>
+
+        </LinearLayout> <!-- TERMINA: LinearLayout BOTONES SUPERIORES -->
 
 
-        </LinearLayout>
 
+    </LinearLayout><!-- TERMINA: LinearLayout CONTENEDOR -->
 
-    </LinearLayout> <!-- TERMINA: LinearLayout CONTENEDOR -->
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

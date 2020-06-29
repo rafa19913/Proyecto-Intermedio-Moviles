@@ -1,10 +1,16 @@
 package com.example.proyecto_intermedio.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -23,6 +29,7 @@ public class MyAccountActivity extends AppCompatActivity {
     private com.ornach.nobobutton.NoboButton btnEditAccount,btnEditPhoto;
     private static int LOAD_IMAGE_RESULTS = 1; // Para imagen
 
+    private static int READ_STORAGE_PERMISSION_REQUEST_CODE=0x3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +62,11 @@ public class MyAccountActivity extends AppCompatActivity {
         profilePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeProfilePhoto();
+                try {
+                    changeProfilePhoto();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         arrowBack.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +84,11 @@ public class MyAccountActivity extends AppCompatActivity {
         btnEditPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeProfilePhoto();
+                try {
+                    changeProfilePhoto();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -120,10 +135,24 @@ public class MyAccountActivity extends AppCompatActivity {
 
 
     // -- FALTA: terminad de acomodar bien el código para cambiar la imagen de perfil --
-    private void changeProfilePhoto(){
-        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(i, LOAD_IMAGE_RESULTS);
+    private void changeProfilePhoto() throws Exception {
+            requestPermissionForReadExtertalStorage();
+            Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(i, LOAD_IMAGE_RESULTS);
     }
+
+
+    public void requestPermissionForReadExtertalStorage() throws Exception {
+        try {
+            ActivityCompat.requestPermissions((Activity) this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    READ_STORAGE_PERMISSION_REQUEST_CODE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

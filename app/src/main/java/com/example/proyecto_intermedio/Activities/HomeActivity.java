@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.proyecto_intermedio.R;
 import com.example.proyecto_intermedio.SampleClasses.Account;
@@ -30,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        onChangeDate = findViewById(R.id.TextViewOnChange);
+        onChangeDate = findViewById(R.id.TextViewOnChange); // Auxiliar para fechas
 
 
         asignComponentsOfHome();

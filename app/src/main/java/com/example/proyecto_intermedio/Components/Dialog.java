@@ -1,18 +1,13 @@
 package com.example.proyecto_intermedio.Components;
 
 
-import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.annimon.stream.Stream;
@@ -20,16 +15,18 @@ import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.DatePicker;
 import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
 import com.applandeo.materialcalendarview.listeners.OnSelectDateListener;
-import com.applandeo.materialcalendarview.utils.DateUtils;
 import com.example.proyecto_intermedio.Activities.HomeActivity;
 import com.example.proyecto_intermedio.R;
 import com.example.proyecto_intermedio.SampleClasses.Account;
 import com.example.proyecto_intermedio.SampleClasses.Expense;
 import com.example.proyecto_intermedio.SampleClasses.Income;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
@@ -51,9 +48,8 @@ public class Dialog implements OnSelectDateListener {
 
 
 
-
-    public static void changeTypeOfAdd(String type){
-        if (type == "Ingreso"){
+    private static void changeTypeOfAdd(String type){
+        if ( type.equals("Ingreso") ){
             typeOfAdd = "Ingreso";   //
         }else{
             typeOfAdd = "Gasto"; //
@@ -61,7 +57,7 @@ public class Dialog implements OnSelectDateListener {
     }
 
     private static void changeTypeOfEdit(String type){
-        if (type == "Ingreso"){
+        if ( type.equals("Ingreso") ){
             typeOfEdit = "Ingreso";   //
         }else{
             typeOfEdit = "Gasto"; //
@@ -127,11 +123,11 @@ public class Dialog implements OnSelectDateListener {
         btnAcept.setOnClickListener(v -> {
             String name = dialogName.getText().toString();
             double amount = Double.parseDouble(dialogAmount.getText().toString());
-            String date = dialogDate.getText().toString();
             String description = dialogDescription.getText().toString();
+            String date = dialogDate.getText().toString();
 
             //--Agregar objecto (LISTA) -- SI typeOfAdd=true == "Ingreso" se agrega un Ingreso, en caso contrario es Gasto
-            if (typeOfAdd == "Ingreso"){
+            if ( typeOfAdd.equals("Ingreso") ){
                 addIncome(name,amount,date,description,cx);
             }else{
                 addExpense(name,amount,date,description,cx);
@@ -144,29 +140,6 @@ public class Dialog implements OnSelectDateListener {
 
         dialog.show();
     }
-
-
-    private void openOneDayPicker() {
-        Calendar min = Calendar.getInstance();
-        min.add(Calendar.MONTH, -5);
-
-        Calendar max = Calendar.getInstance();
-        max.add(Calendar.MONTH, 10);
-
-        DatePickerBuilder oneDayBuilder = new DatePickerBuilder(dialogContext, this)
-                .setPickerType(CalendarView.ONE_DAY_PICKER)
-                .setHeaderColor(R.color.white)
-                .setHeaderLabelColor(R.color.currentMonthDayColor)
-                .setSelectionColor(R.color.daysLabelColor)
-                .setPreviousButtonSrc(R.mipmap.ic_chevron_left_black_24dp)
-                .setForwardButtonSrc(R.mipmap.ic_chevron_right_black_24dp)
-                .setMinimumDate(min)
-                .setMaximumDate(max);
-        DatePicker oneDayPicker = oneDayBuilder.build();
-        oneDayPicker.show();
-    }
-
-
 
     public void dialogEdit(final Context cx, final int position, String type){
         dialogContext = cx;
@@ -216,7 +189,7 @@ public class Dialog implements OnSelectDateListener {
         });
 
 
-        if (typeOfEdit == "Ingreso"){
+        if ( typeOfEdit.equals("Ingreso") ){
             dialogName.setText(Account.myAccount.incomes.get(position).getNameOfIncome());
             dialogAmount.setText(String.valueOf(Account.myAccount.incomes.get(position).getAmount()));
             dialogDate.setText(Account.myAccount.incomes.get(position).getDate());
@@ -229,43 +202,37 @@ public class Dialog implements OnSelectDateListener {
         }
 
 
-         btnDelete.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 if (typeOfEdit == "Ingreso"){
-                     Account.myAccount.incomes.remove(position);
-                     Toasty.success(cx, "Se eliminó un ingreso ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
-                     refreshListOfIncomes(cx);
-                     HomeActivity.updateInformationOfHome();
-                 }else{
-                     Account.myAccount.expenses.remove(position);
-                     Toasty.success(cx, "Se eliminó un gasto ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
-                    refresListOfExpense(cx);
-                     HomeActivity.updateInformationOfHome();
-                 }
-                 dialog.dismiss();
+         btnDelete.setOnClickListener(v -> {
+             if ( typeOfEdit.equals("Ingreso") ){
+                 Account.myAccount.incomes.remove(position);
+                 Toasty.success(cx, "Se eliminó un ingreso ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
+                 refreshListOfIncomes(cx);
+                 HomeActivity.updateInformationOfHome();
+             }else{
+                 Account.myAccount.expenses.remove(position);
+                 Toasty.success(cx, "Se eliminó un gasto ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
+                refresListOfExpense(cx);
+                 HomeActivity.updateInformationOfHome();
              }
+             dialog.dismiss();
          });
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = dialogName.getText().toString();
-                double amount = Double.parseDouble(dialogAmount.getText().toString());
-                String date = dialogDate.getText().toString();
-                String description = dialogDescription.getText().toString();
+        btnEdit.setOnClickListener(v -> {
+            String name = dialogName.getText().toString();
+            double amount = Double.parseDouble(dialogAmount.getText().toString());
+            String date = dialogDate.getText().toString();
+            String description = dialogDescription.getText().toString();
 
-                if (typeOfEdit == "Ingreso"){
-                    editIncome(position,name,amount,date,description,cx);
-                    HomeActivity.updateInformationOfHome();
-                }else{
-                    editExpense(position,name,amount,date,description,cx);
-                    HomeActivity.updateInformationOfHome();
-
-                }
-                dialog.dismiss();
+            if ( typeOfEdit.equals("Ingreso") ){
+                editIncome(position,name,amount,date,description,cx);
+                HomeActivity.updateInformationOfHome();
+            }else{
+                editExpense(position,name,amount,date,description,cx);
+                HomeActivity.updateInformationOfHome();
 
             }
+            dialog.dismiss();
+
         });
 
         dialog.show();
@@ -292,12 +259,12 @@ public class Dialog implements OnSelectDateListener {
         adapterListOfExpense.notifyDataSetChanged();
         Toasty.success(cx, "Se editó un ingreso ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
         typeOfEdit = "";
-
     }
 
     // -- FALTAN VALIDACIONES --
     private static void addIncome(String name,double amount,String date,String desc,Context cx){
         Income income = new Income(name,amount,desc,date);
+
         Toasty.success(cx, "Se agregó un ingreso ¡Éxitosamente!", Toast.LENGTH_SHORT).show();
         Account.myAccount.incomes.add(income);
         typeOfAdd = "";
@@ -329,10 +296,38 @@ public class Dialog implements OnSelectDateListener {
     }
 
 
+
+    private void openOneDayPicker() {
+        Calendar min = Calendar.getInstance();
+        min.add(Calendar.MONTH, -5);
+
+        Calendar max = Calendar.getInstance();
+        max.add(Calendar.MONTH, 10);
+
+        DatePickerBuilder oneDayBuilder = new DatePickerBuilder(dialogContext, this)
+                .setPickerType(CalendarView.ONE_DAY_PICKER)
+                .setHeaderColor(R.color.white)
+                .setHeaderLabelColor(R.color.currentMonthDayColor)
+                .setSelectionColor(R.color.daysLabelColor)
+                .setPreviousButtonSrc(R.mipmap.ic_chevron_left_black_24dp)
+                .setForwardButtonSrc(R.mipmap.ic_chevron_right_black_24dp)
+                .setMinimumDate(min)
+                .setMaximumDate(max);
+        DatePicker oneDayPicker = oneDayBuilder.build();
+        oneDayPicker.show();
+    }
+
+
     @Override
     public void onSelect(List<Calendar> calendars) {
         Stream.of(calendars).forEach(calendar -> dateAux = calendar.getTime().toString());
+
+       // Stream.of(calendars).forEach(calendar -> calendarAux.setTime(calendar.getTime()));
+        //dateAux = dateAux.replaceAll("00:00:00 CDT","");
+
         onChangeDate.setText(dateAux);
+        onChangeDate.setAlpha(0);
+
     }
 
 
