@@ -4,7 +4,6 @@ package com.example.proyecto_intermedio.Components;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,12 +20,8 @@ import com.example.proyecto_intermedio.SampleClasses.Account;
 import com.example.proyecto_intermedio.SampleClasses.Expense;
 import com.example.proyecto_intermedio.SampleClasses.Income;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
@@ -322,8 +317,9 @@ public class Dialog implements OnSelectDateListener {
     public void onSelect(List<Calendar> calendars) {
         Stream.of(calendars).forEach(calendar -> dateAux = calendar.getTime().toString());
 
-       // Stream.of(calendars).forEach(calendar -> calendarAux.setTime(calendar.getTime()));
-        //dateAux = dateAux.replaceAll("00:00:00 CDT","");
+        dateAux = dateAux.replaceAll("00:00:00","");
+        dateAux = dateAux.replaceAll("CDT","");
+        dateAux = dateAux.replaceAll("CST","");
 
         onChangeDate.setText(dateAux);
         onChangeDate.setAlpha(0);

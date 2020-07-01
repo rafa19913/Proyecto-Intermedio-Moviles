@@ -1,6 +1,5 @@
 package com.example.proyecto_intermedio.SampleClasses;
 
-import java.util.Calendar;
 
 /**
  * Clase Incomes: Se agregan todos los ingresos del propietario
