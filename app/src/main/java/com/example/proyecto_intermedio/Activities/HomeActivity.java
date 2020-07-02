@@ -47,7 +47,6 @@ public class HomeActivity extends AppCompatActivity {
 
             checkPermission(Manifest.permission.CAMERA,
                     CAMERA_PERMISSION_CODE);
-
         });
 
 
@@ -112,6 +111,8 @@ public class HomeActivity extends AppCompatActivity {
                 openActivityExportPDF();
             }
         });
+
+
     }
 
 

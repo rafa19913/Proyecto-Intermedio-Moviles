@@ -69,12 +69,6 @@ public class ExpensesActivity extends AppCompatActivity {
                 addExpense();
             }
         });
-        btnClearExpenses.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cleanCheckBoxOfExpenses();
-            }
-        });
         listViewOfExpenses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) { editExpense(position); }
