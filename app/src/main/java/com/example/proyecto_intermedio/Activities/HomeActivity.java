@@ -50,12 +50,7 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
-        /*checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                STORAGE_PERMISSION_CODE);
 
-        checkPermission(Manifest.permission.CAMERA,
-                CAMERA_PERMISSION_CODE);
-        */
         onChangeDate = findViewById(R.id.TextViewOnChange); // Auxiliar para fechas ( Temporal-cambiar )
 
         asignComponentsOfHome();
