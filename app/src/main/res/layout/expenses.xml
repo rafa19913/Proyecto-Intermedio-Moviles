@@ -84,13 +84,6 @@
                     android:orientation="vertical"
                     >
 
-             <Button
-                 android:id="@+id/BtnClearExpense"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="Clear"
-                 android:layout_gravity="center_horizontal"
-                 />
                 <ListView
                     android:id="@+id/ListViewExpenses"
                     android:layout_width="match_parent"

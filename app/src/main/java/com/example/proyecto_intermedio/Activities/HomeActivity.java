@@ -1,11 +1,18 @@
 package com.example.proyecto_intermedio.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.proyecto_intermedio.R;
 import com.example.proyecto_intermedio.SampleClasses.Account;
@@ -19,25 +26,43 @@ public class HomeActivity extends AppCompatActivity {
     public static TextView currentBalance,currentIncomes,currentExpenses,currentBalanceInAccount;
     public static com.ornach.nobobutton.NoboButton btnExpense,btnIncomes,btnMyAccount,btnExport;
     private Intent intent;
-
-
-
     public static TextView onChangeDate;
+
+
+    private static final int STORAGE_PERMISSION_CODE = 101;
+    private static final int CAMERA_PERMISSION_CODE = 100;
+
+    private static Button btnExample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        onChangeDate = findViewById(R.id.TextViewOnChange); // Auxiliar para fechas
+        btnExample = findViewById(R.id.btnExample);
 
+        btnExample.setOnClickListener(v -> {
+          //  checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+          //          STORAGE_PERMISSION_CODE);
+
+            checkPermission(Manifest.permission.CAMERA,
+                    CAMERA_PERMISSION_CODE);
+
+        });
+
+        /*checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                STORAGE_PERMISSION_CODE);
+
+        checkPermission(Manifest.permission.CAMERA,
+                CAMERA_PERMISSION_CODE);
+        */
+        onChangeDate = findViewById(R.id.TextViewOnChange); // Auxiliar para fechas ( Temporal-cambiar )
 
         asignComponentsOfHome();
         updateInformationOfHome();
         addListenersOfButtonsHome();
 
     }
-
 
     /**
     * Se asignan los componentes del Home (botones, TextViews) de: home.xml
@@ -127,6 +152,69 @@ public class HomeActivity extends AppCompatActivity {
         intent = new Intent(this,ExportActivity.class);
         startActivity(intent);
     }
+
+
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super
+                .onRequestPermissionsResult(requestCode,
+                        permissions,
+                        grantResults);
+
+        if (requestCode == CAMERA_PERMISSION_CODE) {
+
+            // Checking whether user granted the permission or not.
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Showing the toast message
+                Toast.makeText(this,"Camera Permission Granted",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this,
+                        "Camera Permission Denied",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
+        else if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this,
+                        "Storage Permission Granted",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+            else {
+                Toast.makeText(this,
+                        "Storage Permission Denied",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
+    }
+    // Function to check and request permission
+    public void checkPermission(String permission, int requestCode)
+    {
+
+        // Checking if permission is not granted
+        if ( ContextCompat.checkSelfPermission(this, permission)
+                == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[] { permission },
+                    requestCode);
+        }
+        else {
+            Toast.makeText(this,
+                    "Permission already granted",
+                    Toast.LENGTH_SHORT)
+                    .show();
+        }
+    }
+
 
 
 }

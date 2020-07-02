@@ -1,12 +1,15 @@
 package com.example.proyecto_intermedio.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -68,7 +71,6 @@ public class ExportActivity extends AppCompatActivity implements OnSelectDateLis
     private static Document documentPdf;
     private static File rutePdf;
 
-    private static int WRITE_STORAGE_PERMISSION_REQUEST_CODE=0x3;
 
     private static Calendar minDate = Calendar.getInstance();
     private static Calendar maxDate = Calendar.getInstance();
@@ -133,6 +135,7 @@ public class ExportActivity extends AppCompatActivity implements OnSelectDateLis
     private void generatePDF() throws Exception {
         getValuesOfDates();
 
+
         minDate = Calendar.getInstance();
         minDate.set(yearBegin,monthBegin,dayOfMonthBegin);
 
@@ -142,22 +145,10 @@ public class ExportActivity extends AppCompatActivity implements OnSelectDateLis
         nameOfPdf = dayOfMonthBegin+"-"+(monthBegin+1)+"-"+yearBegin+" a " + dayOfMonthFinish+"-"+(monthFinish+1)+"-"+yearFinish+".pdf";
 
 
-        requestPermissionForReadExtertalStorage();
         Toasty.warning(this,"Seleccione la ubicación a guardar",Toasty.LENGTH_SHORT).show();
         chooseDirectoryToSave(this);
     }
 
-
-
-    public void requestPermissionForReadExtertalStorage() throws Exception {
-        try {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    WRITE_STORAGE_PERMISSION_REQUEST_CODE);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        }
-    }
 
 
     private void chooseDirectoryToSave(Context cx){
@@ -457,6 +448,9 @@ public class ExportActivity extends AppCompatActivity implements OnSelectDateLis
         dateAux = dateAux.replaceAll("00:00:00","");
         dateAux = dateAux.replaceAll("CDT","");
         dateAux = dateAux.replaceAll("CST","");
+        dateAux = dateAux.replaceAll("GMT","");
+        dateAux = dateAux.replaceAll("GMT-5","");
+        dateAux = dateAux.replaceAll("GMT-6","");
 
         if ( auxPdfDate.equals("start") ){
             dateBegin.setText(dateAux);

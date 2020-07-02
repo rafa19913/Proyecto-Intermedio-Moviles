@@ -320,7 +320,9 @@ public class Dialog implements OnSelectDateListener {
         dateAux = dateAux.replaceAll("00:00:00","");
         dateAux = dateAux.replaceAll("CDT","");
         dateAux = dateAux.replaceAll("CST","");
-
+        dateAux = dateAux.replaceAll("GMT","");
+        dateAux = dateAux.replaceAll("GMT-5","");
+        dateAux = dateAux.replaceAll("GMT-6","");
         onChangeDate.setText(dateAux);
         onChangeDate.setAlpha(0);
 

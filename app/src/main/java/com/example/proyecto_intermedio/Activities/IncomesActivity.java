@@ -28,7 +28,6 @@ public class IncomesActivity extends AppCompatActivity {
 
     private ImageView arrowBack;
     private com.ornach.nobobutton.NoboButton btnAddIncomes;
-    private Button btnClear;
 
     public static ListView listViewOfIncomes;
     public static ArrayAdapter<Income> adapterListOfIncomes;
@@ -50,7 +49,6 @@ public class IncomesActivity extends AppCompatActivity {
     private void asignComponentsOfIncomes(){
         arrowBack = findViewById(R.id.arrowback);
         btnAddIncomes = findViewById(R.id.BtnAddIncome);
-        btnClear = findViewById(R.id.BtnClearIncomes);
         listViewOfIncomes = findViewById(R.id.ListViewIncomes);
     }
 
@@ -68,12 +66,6 @@ public class IncomesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addIncome();
-            }
-        });
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cleanCheckBoxListOfIncomes();
             }
         });
         listViewOfIncomes.setOnItemClickListener(new AdapterView.OnItemClickListener() {

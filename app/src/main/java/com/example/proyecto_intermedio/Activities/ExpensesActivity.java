@@ -50,7 +50,6 @@ public class ExpensesActivity extends AppCompatActivity {
     private void asignComponentsOfExpenses(){
         arrowBack = findViewById(R.id.arrowback);
         btnAddExpense = findViewById(R.id.BtnAddExpense);
-        btnClearExpenses = findViewById(R.id.BtnClearExpense);
         listViewOfExpenses = findViewById(R.id.ListViewExpenses);
     }
 
