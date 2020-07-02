@@ -31,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private static final int STORAGE_PERMISSION_CODE = 101;
     private static final int CAMERA_PERMISSION_CODE = 100;
+    private static final int READ_PERMISSION_CODE = 102;
 
     private static Button btnExample;
 
@@ -47,6 +48,9 @@ public class HomeActivity extends AppCompatActivity {
 
             checkPermission(Manifest.permission.CAMERA,
                     CAMERA_PERMISSION_CODE);
+
+            checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
+                    READ_PERMISSION_CODE);
         });
 
 
@@ -175,7 +179,8 @@ public class HomeActivity extends AppCompatActivity {
                         .show();
             }
         }
-        else if (requestCode == STORAGE_PERMISSION_CODE) {
+
+        if (requestCode == STORAGE_PERMISSION_CODE) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this,
@@ -189,6 +194,18 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT)
                         .show();
             }
+        }
+
+        if (requestCode == READ_PERMISSION_CODE){
+
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this,
+                        "Read Permission Granted",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+
         }
     }
     // Function to check and request permission

@@ -163,7 +163,7 @@ public class ExportActivity extends AppCompatActivity implements OnSelectDateLis
                     public void onChoosePath(String path, File pathFile) {
                         pathRute = pathFile;
                         createThePDF();
-                        visualizatePDF();
+                        //visualizatePDF();
                     }
                 })
                 .build()
