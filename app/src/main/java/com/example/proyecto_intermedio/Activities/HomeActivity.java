@@ -42,8 +42,8 @@ public class HomeActivity extends AppCompatActivity {
         btnExample = findViewById(R.id.btnExample);
 
         btnExample.setOnClickListener(v -> {
-          //  checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-          //          STORAGE_PERMISSION_CODE);
+            checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    STORAGE_PERMISSION_CODE);
 
             checkPermission(Manifest.permission.CAMERA,
                     CAMERA_PERMISSION_CODE);
