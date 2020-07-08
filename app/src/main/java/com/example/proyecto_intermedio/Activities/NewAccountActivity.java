@@ -66,7 +66,7 @@ public class NewAccountActivity extends AppCompatActivity {
 
         resOwner = validateOwnerName.find();
         resBalance = validateBalance.find();
-
+        //Validacion
         if(!resOwner){
             Toasty.warning(this, "¡Utilize solo caracteres alfabeticos y mas de 3 letras para el nombre!", Toast.LENGTH_LONG, true).show();
         }
