@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.util.regex.*;
 
 import com.example.proyecto_intermedio.R;
 import com.example.proyecto_intermedio.SampleClasses.Account;
@@ -51,12 +52,32 @@ public class NewAccountActivity extends AppCompatActivity {
      * Se crea la cuenta SI y SÓLO SI los campos son correctos
      */
     private void createNewAccount(){
-        openHome();
-       /* if (returnTrueIfTheFieldsAreCorrect()){
+        if(returnTrueIfTheFieldsAreCorrect()){
+
             openHome();
-        }else{
-            Toast.makeText(this, "Campos incorrectos", Toast.LENGTH_SHORT).show();
-        }*/
+
+        }
+    }
+
+    private boolean returnTrueIfTheFieldsAreCorrect(){
+        boolean resOwner, resBalance;
+        Pattern REOwnerName = Pattern.compile("[a-zA-Z]{3,50}");
+        Matcher validateOwnerName = REOwnerName.matcher(editTextOwnerName.getText());
+        Pattern REBalance = Pattern.compile("[1-9]{1}[0-9]*.[0-9]{2}");
+        Matcher validateBalance = REBalance.matcher(editTextBalance.getText());
+
+        resOwner = validateOwnerName.find();
+        resBalance = validateBalance.find();
+
+        if(!resOwner){
+            Toasty.warning(this, "¡Utilize solo caracteres alfabeticos y mas de 3 letras para el nombre!", Toast.LENGTH_LONG, true).show();
+        }
+        if(!resBalance){
+            Toasty.warning(this, "¡Ingrese una cantidad numerica incluyendo centavos!", Toast.LENGTH_LONG, true).show();
+        }
+
+
+        return resOwner&&resBalance;
     }
 
     /**
@@ -91,16 +112,6 @@ public class NewAccountActivity extends AppCompatActivity {
     /**
      * Valida los campos vacios y correctos de (Nombre del propietario y Saldo)
      */
-    private boolean returnTrueIfTheFieldsAreCorrect(){
-        String ownerName = editTextOwnerName.getText().toString();
-        double balance = Double.parseDouble((editTextBalance.getText().toString()));
-
-        if (validateOwner(ownerName) && validateBalance(balance)){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
 
     /**
