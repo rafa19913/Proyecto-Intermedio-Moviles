@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,26 +32,22 @@ public class HomeActivity extends AppCompatActivity {
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int READ_PERMISSION_CODE = 102;
 
-    private static Button btnExample;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        btnExample = findViewById(R.id.btnExample);
+        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                STORAGE_PERMISSION_CODE);
 
-        btnExample.setOnClickListener(v -> {
-            checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    STORAGE_PERMISSION_CODE);
+        checkPermission(Manifest.permission.CAMERA,
+                CAMERA_PERMISSION_CODE);
 
-            checkPermission(Manifest.permission.CAMERA,
-                    CAMERA_PERMISSION_CODE);
-
-            checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
-                    READ_PERMISSION_CODE);
-        });
-
+        checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
+                READ_PERMISSION_CODE);
 
         onChangeDate = findViewById(R.id.TextViewOnChange); // Auxiliar para fechas ( Temporal-cambiar )
 
@@ -157,6 +152,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+    // PERMISOS
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super

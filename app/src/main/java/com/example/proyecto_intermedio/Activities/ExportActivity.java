@@ -180,8 +180,7 @@ public class ExportActivity extends AppCompatActivity implements OnSelectDateLis
             intent.setDataAndType(Uri.fromFile(myFile), "application/pdf");
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             this.startActivity(intent);
-        }
-        else {
+        }else {
             Toasty.error(this, "¡Error! No hay PDF en la ubicación", Toast.LENGTH_SHORT).show();
 
         }

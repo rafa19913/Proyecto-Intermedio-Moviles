@@ -155,19 +155,6 @@
                 app:nb_radius="5dp"
                 app:nb_fontIcon="&#xf040;"/>
 
-            <com.ornach.nobobutton.NoboButton
-                android:id="@+id/BtnEliminarGasto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginBottom="20dp"
-                app:nb_borderColor="#FFFFFF"
-                app:nb_borderWidth="2dp"
-                app:nb_backgroundColor="#8EFF0000"
-                app:nb_focusColor="#FF0000"
-                app:nb_textColor="#FFF"
-                app:nb_radius="5dp"
-                app:nb_fontIcon="&#xf014;"/>
 
 
         </LinearLayout>
