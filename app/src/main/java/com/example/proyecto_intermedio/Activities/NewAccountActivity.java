@@ -53,9 +53,7 @@ public class NewAccountActivity extends AppCompatActivity {
      */
     private void createNewAccount(){
         if(returnTrueIfTheFieldsAreCorrect()){
-
             openHome();
-
         }
     }
 
